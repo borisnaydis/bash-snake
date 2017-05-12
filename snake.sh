@@ -7,24 +7,21 @@ echo "HEIGHT is ${HEIGHT}. WIDTH is ${WIDTH}."
 
 BORDER=''
 for ((i=1;i<=$(($WIDTH+2));i++)); do
-    BORDER+="#"
+    BORDER+='#'
 done
 
 declare -A FIELD
-
-makeField(){
-    for ((i=1;i<=HEIGHT;i++)); do
-        for ((j=1;j<=WIDTH;j++)); do
-            FIELD[$i,$j]=' '
-        done
+for ((i=1;i<=HEIGHT;i++)); do
+    for ((j=1;j<=WIDTH;j++)); do
+        FIELD[$i,$j]=' '
     done
-}
+done
 
 printField(){
     echo "$BORDER"
     
     for ((i=1;i<=HEIGHT;i++)); do
-        echo -n "#"
+        echo -n '#'
         for ((j=1;j<=WIDTH;j++)); do
             echo -n "${FIELD[$i,$j]}"
         done
@@ -34,6 +31,5 @@ printField(){
     echo "$BORDER"
 }
 
-makeField
 FIELD[5,5]='@'
 printField
